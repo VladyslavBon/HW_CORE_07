@@ -4,7 +4,6 @@ from pickle import dump, load
 
 class Field:
     def __init__(self, value=None):
-        self.__value = None
         self.value = value
 
 class Name(Field):
@@ -156,6 +155,16 @@ def main():
         for ch in ab.iterator():
             print(ch)
 
+    def handler_info():
+        print("write 'add ...' to add contact's phone and birthday")
+        print("write 'change ...' to change contact's phone")
+        print("write 'delete ...' to delete contact's phone")
+        print("write 'phone ...' to see contact's phone")
+        print("write 'birthday ...' to see how many days left to contact's birthay")
+        print("write 'search ...' to find any match with contacts in adressbook")
+
+    print("please write 'info' to get instructson about adressbook comands")
+
     try:
         with open("data.bin", "rb") as fh:
             ab = load(fh)
@@ -171,6 +180,8 @@ def main():
             break
         elif string == "hello":
             print("How can I help you?")
+        elif string == "info":
+            handler_info()
         elif string == "show all":
             handler_show_all()
         elif string.startswith("add"):
